@@ -1,0 +1,50 @@
+[debug] [naha] 
+[debug] [naha] Initial source changes: 
+[debug] [naha] 	removed:Set()
+[debug] [naha] 	added: Set(/home/lilit/IdeaProjects/rest-api/src/main/java/org/app/pojo/Customer.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/pojo/Facility.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Application.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java)
+[debug] [naha] 	modified: Set()
+[debug] [naha] Invalidated products: Set()
+[debug] [naha] External API changes: API Changes: Set()
+[debug] [naha] Modified binary dependencies: Set()
+[debug] [naha] Initial directly invalidated sources: Set(/home/lilit/IdeaProjects/rest-api/src/main/java/org/app/pojo/Customer.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/pojo/Facility.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Application.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java)
+[debug] [naha] 
+[debug] [naha] Sources indirectly invalidated by:
+[debug] [naha] 	product: Set()
+[debug] [naha] 	binary dep: Set()
+[debug] [naha] 	external source: Set()
+[debug] All initially invalidated sources: Set(/home/lilit/IdeaProjects/rest-api/src/main/java/org/app/pojo/Customer.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/pojo/Facility.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Application.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java)
+[debug] [naha] Initial set of included nodes: Set(/home/lilit/IdeaProjects/rest-api/src/main/java/org/app/pojo/Customer.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/pojo/Facility.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Application.java, /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java)
+[debug] [naha] Recompiling all 4 sources: invalidated sources (4) exceeded 50.0% of all sources
+[info] Compiling 4 Java sources to /home/lilit/IdeaProjects/rest-api/target/scala-2.10/classes...
+[debug] Attempting to call com.sun.tools.javac.api.JavacTool@245342 directly...
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Application.java:3: package org.springframework.boot does not exist
+[error] import org.springframework.boot.SpringApplication;
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Application.java:4: package org.springframework.boot.autoconfigure does not exist
+[error] import org.springframework.boot.autoconfigure.SpringBootApplication;
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Application.java:9: cannot find symbol
+[error]   symbol: class SpringBootApplication
+[error] @SpringBootApplication
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java:5: package org.springframework.web.bind.annotation does not exist
+[error] import org.springframework.web.bind.annotation.RequestMapping;
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java:6: package org.springframework.web.bind.annotation does not exist
+[error] import org.springframework.web.bind.annotation.RequestMethod;
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java:7: package org.springframework.web.bind.annotation does not exist
+[error] import org.springframework.web.bind.annotation.RequestParam;
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java:8: package org.springframework.web.bind.annotation does not exist
+[error] import org.springframework.web.bind.annotation.RestController;
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java:15: cannot find symbol
+[error]   symbol: class RestController
+[error] @RestController
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java:22: cannot find symbol
+[error]   symbol:   class RequestParam
+[error]   location: class org.app.controller.Controller
+[error]     public String greeting(@RequestParam(value="name", defaultValue="World") String name) {
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Controller.java:21: cannot find symbol
+[error]   symbol:   class RequestMapping
+[error]   location: class org.app.controller.Controller
+[error]     @RequestMapping("/customers")
+[error] /home/lilit/IdeaProjects/rest-api/src/main/java/org/app/controller/Application.java:12: cannot find symbol
+[error]   symbol:   variable SpringApplication
+[error]   location: class org.app.controller.Application
+[error]         SpringApplication.run(Application.class, args);
+[error] (compile:compileIncremental) javac returned nonzero exit code
