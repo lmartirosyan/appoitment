@@ -1,0 +1,4 @@
+id;address;email;working_hours;empty_spot;per_hour
+48;Armenia,Yerevan Saryan1 street 28;facility1@somewhere.com;9:00 am - 6:00 pm;5;10
+49;Armenia,Yerevan Saryan2 street 28;facility2@somewhere.com;10:00 am - 6:00 pm;5;10
+450;Armenia,Yerevan Saryan3 street 28;facility3@somewhere.com;11:00 am - 7:00 pm;5;10
