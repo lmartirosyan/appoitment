@@ -179,9 +179,11 @@ Run Application class and set up Postman or other requester tool
 2. Configure headers for basic authentification: user- admin, pass-admin
 3. Configure heasers to Content-Type application/x-www-form-urlencoded
 4. Configure Body params:
+
 		key: facility_id, value: 38
 		key: count, value: 4
 		key: empty_spot, value: 2
+		
 	Note: Values of body should be based on first response
 5. After submiting request you should receive this csv:
 ```
