@@ -195,3 +195,13 @@ Run Application class and set up Postman or other requester tool
 
 ```
 In case if no available customer or empty spot you receive empty csv with headers
+
+
+### Unit Tests
+
+Appointment project has 2 unit test:
+1. getEntry_test method checks if entry response is ok and response contains expected json objects
+2. distribute_test method which if distribution response is ok and response contains required headers
+ IMPORTANT!!!!!
+ facilityId field should be specified based on entry response, as ordering of test-method invocations is not guaranteed. 
+
