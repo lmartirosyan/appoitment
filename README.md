@@ -105,7 +105,7 @@ For each of the appointment, we facility provides 1 hour. Schedule should be wit
 Run Application class and set up Postman or other requester tool
  
 ##### First Request Congiuration
-1. Confiure POST request with url: http://127.0.0.1:8080/api/metadata
+1. Confiure POST request with url: http://localhost:8080/api/schedule/entry
 2. Configure headers for basic authentification: user- admin, pass-admin
 3. Configure heasers to Accept application/json.
 4. Configure Body params:
@@ -175,7 +175,7 @@ Run Application class and set up Postman or other requester tool
 	}
 	```
 ##### Second Request Congiuration
-1. Confiure POST request with url: http://localhost:8080/api/appointments
+1. Confiure POST request with url: http://localhost:8080/api/schedule/distribute
 2. Configure headers for basic authentification: user- admin, pass-admin
 3. Configure heasers to Content-Type application/x-www-form-urlencoded
 4. Configure Body params:
