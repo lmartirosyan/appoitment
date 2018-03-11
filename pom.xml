@@ -7,12 +7,14 @@
     <groupId>org.app</groupId>
     <artifactId>rest-api</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <properties>
         <java.version>1.8</java.version>
         <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
-        <jeckson.version>2.9.4</jeckson.version>
+        <jeckson.version>2.9.0</jeckson.version>
         <hibernate.version>5.2.13.Final</hibernate.version>
         <posgresql.version>42.2.1</posgresql.version>
+        <opencsv.version>3.8</opencsv.version>
         </properties>
 
     <dependencies>
@@ -20,15 +22,9 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
+            <version>RELEASE</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
+           <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jeckson.version}</version>
@@ -54,14 +50,19 @@
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
-            <version>3.8</version>
+            <version>${opencsv.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>RELEASE</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-security</artifactId>-->
-            <!--<version>RELEASE</version>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -80,12 +81,14 @@
             </plugin>
         </plugins>
     </build>
+
     <repositories>
         <repository>
             <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-releases</id>

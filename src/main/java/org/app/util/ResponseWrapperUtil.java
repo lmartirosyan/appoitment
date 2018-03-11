@@ -14,12 +14,13 @@ import java.util.List;
 /**
  * Created by lilit on 3/4/18.
  */
-public class WrapperUtil {
-    public static final String CSV_SEPARATOR=";";
+public class ResponseWrapperUtil {
+    public static final String CSV_SEPARATOR = ";";
 
     /**
      * Returns to client  customers
      * and  facilities list
+     *
      * @param customers
      * @param facilities
      * @return
@@ -30,6 +31,7 @@ public class WrapperUtil {
         List<Facility> facilityObj = FacilityUtil.parseFacilityCSV(facilities);
         DBUtil.saveOrUpdate(customersObj);
         DBUtil.saveOrUpdate(facilityObj);
+        DBUtil.saveOrUpdate(FacilityFreeScheduleUtil.generateFacilitiesFreeSchedules(facilityObj));
         ResponseWrapper responseWrapper = new ResponseWrapper.Builder()
                 .customers(customersObj)
                 .facilities(facilityObj)
@@ -46,13 +48,11 @@ public class WrapperUtil {
      * @return
      * @throws IOException
      */
-    public static  <T> String objectToJson(T obj) throws IOException {
+    public static <T> String objectToJson(T obj) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        return  mapper.writeValueAsString(obj);
+        return mapper.writeValueAsString(obj);
     }
-
-
 
 
 }
