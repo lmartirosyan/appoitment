@@ -97,6 +97,7 @@ Run Application class and set up Postman or other requester tool
 		key: customers, value: list-of-custmers.csv (csv file located in /csv/list-of-custmers.csv )
 		key: facilities, value: list-of-facilities.csv (csv file located in /csv/list-of-facilities.csv)
 5. After submiting request you should receive smth like this:
+	```
 	{
 	    "customers": [
 		{
@@ -157,4 +158,23 @@ Run Application class and set up Postman or other requester tool
 		}
 	    ]
 	}
-		
+	```
+####First Request Congiuration
+1. Confiure POST request with url: http://localhost:8080/api/appointments
+2. Configure headers for basic authentification: user- admin, pass-admin
+3. Configure heasers to Content-Type application/x-www-form-urlencoded
+4. Configure Body params:
+		key: facility_id, value: 38
+		key: count, value: 4
+		key: empty_spot, value: 2
+	Note: Values of body should be based on first response
+5. After submiting request you should receive this csv:
+```
+"id";"user_name";"user_email";"facility_address";"start_time";"end_time"
+"15";"Alex";"alex@somewhere.com";"Armenia,Yerevan Saryan1 street 28";"2018-03-19 09:00";"2018-03-19 09:00"
+"16";"Anna";"anna@somewhere.com";"Armenia,Yerevan Saryan1 street 28";"2018-03-19 09:00";"2018-03-19 09:00"
+"17";"David";"david@somewhere.com";"Armenia,Yerevan Saryan1 street 28";"2018-03-19 09:00";"2018-03-19 09:00"
+"18";"Ben";"ben@somewhere.com";"Armenia,Yerevan Saryan1 street 28";"2018-03-19 09:00";"2018-03-19 09:00"
+
+```
+In case if no available customer or empty spot you receive empty csv with headers
