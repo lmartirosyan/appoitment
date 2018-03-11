@@ -18,4 +18,10 @@ public class Constants {
     public static final String WORKING_HOURS_FORMAT="HH:mm:ss";
 
     public static final int WEEK_COUNT=4;
+
+    public static final String CSV_SEPARATOR = ";";
+
+    public static final int FACILITY_CSV_SIZE=5;
+
+    public static final int CUSTOMER_CSV_SIZE=2;
 }

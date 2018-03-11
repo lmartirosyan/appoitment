@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * Created by lilit on 3/4/18.
  */
 public class FacilityUtil {
-    private static final int CUSTOMER_CSV_SIZE=5;
+
     /**
      * Parses facility.csv to json
      * @param file
@@ -23,7 +23,7 @@ public class FacilityUtil {
      */
     public static List<Facility> parseFacilityCSV(MultipartFile file) throws IOException {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-            Pattern pattern = Pattern.compile(ResponseWrapperUtil.CSV_SEPARATOR);
+            Pattern pattern = Pattern.compile(Constants.CSV_SEPARATOR);
             List<Facility> facilities = in.lines().skip(1).map(line -> {
                 String[] x = pattern.split(line);
                 Facility facility = generateFacility(x);
@@ -39,7 +39,7 @@ public class FacilityUtil {
      */
     public static Facility generateFacility(String[] params) {
         Facility facility=null;
-        if (params.length ==CUSTOMER_CSV_SIZE) {
+        if (params.length ==Constants.FACILITY_CSV_SIZE) {
             facility = new Facility();
             facility.setAddress(params[0]);
             facility.setEmail(params[1]);

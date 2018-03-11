@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by lilit on 3/9/18.
+ * Created by lilit on 3/4/18.
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = "@HQL_GET_ALL_FACILITY_FREE_SCHEDULE",

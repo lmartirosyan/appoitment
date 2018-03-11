@@ -3,7 +3,7 @@ package org.app.model;
 import javax.persistence.*;
 
 /**
- * Created by lilit on 3/9/18.
+ * Created by lilit on 3/4/18.
  */
 @Entity
 public class Facility {

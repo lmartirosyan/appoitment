@@ -15,8 +15,6 @@ import java.util.stream.Collectors;
  */
 public class CustomerUtil {
 
-
-    private static final int CUSTOMER_CSV_SIZE=2;
     /**
      * Parses customer.csv to json
      *
@@ -26,7 +24,7 @@ public class CustomerUtil {
      */
     public static List<Customer> parseCustomerCSV(MultipartFile file) throws IOException {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-            Pattern pattern = Pattern.compile(ResponseWrapperUtil.CSV_SEPARATOR);
+            Pattern pattern = Pattern.compile(Constants.CSV_SEPARATOR);
             List<Customer> customers = in.lines().skip(1).map(line -> {
                 String[] x = pattern.split(line);
                 return generateCustomer(x);
@@ -42,7 +40,7 @@ public class CustomerUtil {
      */
     public static Customer generateCustomer(String[] params) {
         Customer customer=null;
-        if (params.length == CUSTOMER_CSV_SIZE) {
+        if (params.length == Constants.CUSTOMER_CSV_SIZE) {
              customer = new Customer();
             customer.setName(params[0]);
             customer.setEmail(params[1]);

@@ -4,8 +4,8 @@ package org.app.controller;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.app.security.SecurityConfiguration;
-import org.app.processor.MetadataProcessor;
-import org.app.util.ResponseWrapperUtil;
+import org.app.processor.EntryProcessor;
+import org.app.util.EntryResponseWrapper;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,9 +34,9 @@ public class Controller {
      * @return
      * @throws IOException
      */
-    @RequestMapping(value="/api/metadata",method = RequestMethod.POST)
+    @RequestMapping(value="/api/schedule/entry",method = RequestMethod.POST)
     public String getCustomerAndFacilityList(@RequestParam("customers") MultipartFile customers,@RequestParam("facilities") MultipartFile facilities) throws IOException {
-       return ResponseWrapperUtil.generateResponse(customers,facilities);
+       return EntryResponseWrapper.generateResponse(customers,facilities);
     }
 
     /**
@@ -48,11 +48,11 @@ public class Controller {
      * @return
      * @throws IOException
      */
-    @RequestMapping(value="/api/appointments",method = RequestMethod.POST)
+    @RequestMapping(value="/api/schedule/distribute",method = RequestMethod.POST)
     public void distribute(@RequestParam("facility_id") int   facilityId,@RequestParam("count") int customerCount,@RequestParam("empty_spot") int emptySpotPerWeek,HttpServletResponse response ) throws IOException {
         System.out.println(facilityId+ " "+ customerCount+" "+emptySpotPerWeek);
 
-        InputStream is= MetadataProcessor.getAppointmentsIS(facilityId, customerCount, emptySpotPerWeek);
+        InputStream is= EntryProcessor.getAppointmentsIS(facilityId, customerCount, emptySpotPerWeek);
         response.addHeader("Content-disposition", "attachment;filename=list-of-appointments.csv");
         response.setContentType("txt/plain");
 

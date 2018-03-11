@@ -13,12 +13,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * AppointmentProcessor class, distributes
+ * DistributionProcessor class, distributes
  * customers on specified facility
  *
  * Created by lilit on 3/4/18.
  */
-public class AppointmentProcessor {
+public class DistributionProcessor {
 
 
 

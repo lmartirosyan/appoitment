@@ -14,8 +14,7 @@ import java.util.List;
 /**
  * Created by lilit on 3/4/18.
  */
-public class ResponseWrapperUtil {
-    public static final String CSV_SEPARATOR = ";";
+public class EntryResponseWrapper {
 
     /**
      * Returns to client  customers
