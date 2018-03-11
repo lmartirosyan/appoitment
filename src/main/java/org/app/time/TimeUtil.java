@@ -28,8 +28,8 @@ public class TimeUtil {
      */
     public static List<LocalDateTime> getWorkingHoursForWeek(LocalTime startTime, LocalTime endTime, LocalDateTime now) {
         List<LocalDateTime> workingHoursPerWeek=new ArrayList<>();
-        LocalDateTime monday=getDayOfNextWeek(now, DayOfWeek.MONDAY);
-        LocalDateTime friday=getDayOfNextWeek(now, DayOfWeek.FRIDAY);
+        LocalDateTime monday=now.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+        LocalDateTime friday=monday.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
         Stream<LocalDateTime> weekDays = new DateTimeRange(monday, friday).dateStream();
         weekDays.forEach(date->{
             List<LocalDateTime> hoursOfDay = getHoursForDay(startTime, endTime, date);
@@ -52,17 +52,6 @@ public class TimeUtil {
         Stream<LocalDateTime> workingHoursPerDay = new DateTimeRange(startDateTime, endDateTime).timeStream();
         return workingHoursPerDay.collect(Collectors.toList());//todo:review filter
 
-    }
-    /**
-     * Returns day of week
-     * if dayOfWeek is Monday we shift to the next week
-     *
-     * @param date
-     * @param dayOfWeek
-     * @return
-     */
-    private static LocalDateTime getDayOfNextWeek(LocalDateTime date, DayOfWeek dayOfWeek) {
-        return   date.plusWeeks(1).with(TemporalAdjusters.next(dayOfWeek));
     }
 
     /**

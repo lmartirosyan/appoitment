@@ -35,7 +35,7 @@ public class Controller {
      * @throws IOException
      */
     @RequestMapping(value="/api/schedule/entry",method = RequestMethod.POST)
-    public String getCustomerAndFacilityList(@RequestParam("customers") MultipartFile customers,@RequestParam("facilities") MultipartFile facilities) throws IOException {
+    public String getEntry(@RequestParam("customers") MultipartFile customers, @RequestParam("facilities") MultipartFile facilities) throws IOException {
        return EntryResponseWrapper.generateResponse(customers,facilities);
     }
 
