@@ -1,12 +1,9 @@
 package org.app.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by lilit on 3/4/18.
+ * Created by lilit on 3/9/18.
  */
 @Entity
 public class Facility {
@@ -17,8 +14,10 @@ public class Facility {
     private int emptySpot;
     private int perHour;
 
+
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -84,9 +83,9 @@ public class Facility {
 
         Facility facility = (Facility) o;
 
-        if (id != facility.id) return false;
         if (emptySpot != facility.emptySpot) return false;
         if (perHour != facility.perHour) return false;
+        if (id != facility.id) return false;
         if (email != null ? !email.equals(facility.email) : facility.email != null) return false;
         if (address != null ? !address.equals(facility.address) : facility.address != null) return false;
         if (workingHours != null ? !workingHours.equals(facility.workingHours) : facility.workingHours != null)
@@ -97,12 +96,12 @@ public class Facility {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
+        int result = email != null ? email.hashCode() : 0;
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (workingHours != null ? workingHours.hashCode() : 0);
         result = 31 * result + emptySpot;
         result = 31 * result + perHour;
+        result = 31 * result + id;
         return result;
     }
 }

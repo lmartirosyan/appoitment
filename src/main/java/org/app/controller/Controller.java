@@ -3,8 +3,10 @@ package org.app.controller;
 
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.app.util.AppointmentUtil;
-import org.app.util.WrapperUtil;
+import org.app.security.SecurityConfiguration;
+import org.app.processor.MetadataProcessor;
+import org.app.util.ResponseWrapperUtil;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +23,7 @@ import java.io.InputStream;
  * Created by lilit on 3/3/18.
  */
 @RestController
+@Import({ SecurityConfiguration.class })
 public class Controller {
 
     /**
@@ -31,9 +34,9 @@ public class Controller {
      * @return
      * @throws IOException
      */
-    @RequestMapping(value="/list",method = RequestMethod.POST)
-    public String customers(@RequestParam("customers") MultipartFile customers,@RequestParam("facilities") MultipartFile facilities) throws IOException {
-       return WrapperUtil.generateResponse(customers,facilities);
+    @RequestMapping(value="/api/metadata",method = RequestMethod.POST)
+    public String getCustomerAndFacilityList(@RequestParam("customers") MultipartFile customers,@RequestParam("facilities") MultipartFile facilities) throws IOException {
+       return ResponseWrapperUtil.generateResponse(customers,facilities);
     }
 
     /**
@@ -45,15 +48,15 @@ public class Controller {
      * @return
      * @throws IOException
      */
-    @RequestMapping(value="/appointments",method = RequestMethod.POST)
+    @RequestMapping(value="/api/appointments",method = RequestMethod.POST)
     public void distribute(@RequestParam("facility_id") int   facilityId,@RequestParam("count") int customerCount,@RequestParam("empty_spot") int emptySpotPerWeek,HttpServletResponse response ) throws IOException {
         System.out.println(facilityId+ " "+ customerCount+" "+emptySpotPerWeek);
 
-        InputStream is=AppointmentUtil.getAppointmentsIS(facilityId, customerCount, emptySpotPerWeek);
+        InputStream is= MetadataProcessor.getAppointmentsIS(facilityId, customerCount, emptySpotPerWeek);
         response.addHeader("Content-disposition", "attachment;filename=list-of-appointments.csv");
         response.setContentType("txt/plain");
 
-        // Copy the stream to the response's output stream.
+        // Copy the dateStream to the response's output dateStream.
         IOUtils.copy(is, response.getOutputStream());
         response.flushBuffer();
 

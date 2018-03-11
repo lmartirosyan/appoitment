@@ -1,15 +1,9 @@
 package org.app.model;
 
-import org.hibernate.annotations.NamedQueries;
-import org.hibernate.annotations.NamedQuery;
-
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by lilit on 3/4/18.
+ * Created by lilit on 3/9/18.
  */
 @Entity
 @NamedQueries({ @NamedQuery(name = "@HQL_GET_ALL_CUSTOMERS",
@@ -21,6 +15,7 @@ public class Customer {
 
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -28,7 +23,6 @@ public class Customer {
     public void setId(int id) {
         this.id = id;
     }
-
     @Basic
     @Column(name = "name", nullable = false, length = 200)
     public String getName() {
@@ -49,6 +43,8 @@ public class Customer {
         this.email = email;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,9 +61,9 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + id;
         return result;
     }
 }

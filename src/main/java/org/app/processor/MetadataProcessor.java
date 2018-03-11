@@ -1,8 +1,8 @@
-package org.app.util;
+package org.app.processor;
 
 import com.opencsv.CSVWriter;
 import org.app.model.Appointment;
-import org.app.processor.Distributor;
+import org.app.processor.AppointmentProcessor;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -16,8 +16,9 @@ import java.util.List;
 /**
  * Created by lilit on 3/4/18.
  */
-public class AppointmentUtil {
+public class MetadataProcessor {
     /**
+     * Parses Appointment object list to csv
      *
      * @param appointments
      * @throws IOException
@@ -33,6 +34,7 @@ public class AppointmentUtil {
     }
 
     /**
+     *  Generates content of csv file
      *
      * @param appointments
      * @return
@@ -52,6 +54,7 @@ public class AppointmentUtil {
     }
 
     /**
+     * Returns scheduled appointment input dateStream
      *
      * @param facilityId
      * @param customerCount
@@ -61,7 +64,7 @@ public class AppointmentUtil {
     public static InputStream getAppointmentsIS(int facilityId, int customerCount, int emptySpotPerWeek) {
         InputStream inputStream=null;
        try{
-            List<Appointment> appiontments = Distributor.getAppointments(facilityId, customerCount, emptySpotPerWeek);
+            List<Appointment> appiontments = AppointmentProcessor.getAppointments(facilityId, customerCount, emptySpotPerWeek);
             StringWriter writer = parseToCsv(appiontments);
            inputStream = new ByteArrayInputStream(writer.toString().getBytes(StandardCharsets.UTF_8));
 

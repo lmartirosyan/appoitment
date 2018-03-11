@@ -1,9 +1,6 @@
 package org.app.util;
 
-import org.app.dao.DBUtil;
 import org.app.model.Customer;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -19,7 +16,7 @@ import java.util.stream.Collectors;
 public class CustomerUtil {
 
 
-    private static final int CUSTOMER_CSV_SIZE=3;
+    private static final int CUSTOMER_CSV_SIZE=2;
     /**
      * Parses customer.csv to json
      *
@@ -29,7 +26,7 @@ public class CustomerUtil {
      */
     public static List<Customer> parseCustomerCSV(MultipartFile file) throws IOException {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-            Pattern pattern = Pattern.compile(WrapperUtil.CSV_SEPARATOR);
+            Pattern pattern = Pattern.compile(ResponseWrapperUtil.CSV_SEPARATOR);
             List<Customer> customers = in.lines().skip(1).map(line -> {
                 String[] x = pattern.split(line);
                 return generateCustomer(x);
@@ -47,9 +44,8 @@ public class CustomerUtil {
         Customer customer=null;
         if (params.length == CUSTOMER_CSV_SIZE) {
              customer = new Customer();
-            customer.setId(Integer.parseInt(params[0]));
-            customer.setName(params[1]);
-            customer.setEmail(params[2]);
+            customer.setName(params[0]);
+            customer.setEmail(params[1]);
         }
         return customer;
     }

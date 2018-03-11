@@ -11,9 +11,10 @@
     <mapping class="org.app.model.Customer"/>
     <mapping class="org.app.model.Facility"/>
     <mapping class="org.app.model.Appointment"/>
+    <mapping class="org.app.model.FacilityFreeSchedule"/>
 
 
-      <!-- DB schema will be updated if needed -->
+    <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

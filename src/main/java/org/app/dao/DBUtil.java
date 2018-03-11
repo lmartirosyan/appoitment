@@ -7,7 +7,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.omg.CORBA.Object;
+
 
 import java.util.List;
 
@@ -77,6 +77,22 @@ public class DBUtil {
             return session.get(object,id);
         }
     }
+    /**
+     * Loads limited Customers list,
+     * limitation comes in request
+     * from user as customer counts
+     *
+     * @param id
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> load(int id){
+        try (Session session = sessionFactory.openSession()) {
+            return   session.getNamedQuery("@HQL_GET_ALL_FACILITY_FREE_SCHEDULE")
+                    .setParameter("id", id)
+                    .getResultList();
+        }
+    }
 
     /**
      * Loads limited Customers list,
@@ -105,6 +121,20 @@ public class DBUtil {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             objects.stream().forEach(obj -> session.delete(obj));
+            transaction.commit();
+        }
+    }
+
+    /**
+     *  Deletes record from
+     *  DB corresponding table
+     * @param objects
+     * @param <T>
+     */
+    public static <T> void delete(T objects){
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(objects);
             transaction.commit();
 
         }
