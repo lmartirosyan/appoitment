@@ -1,7 +1,27 @@
 # Appoitment
+
 This project is rest api which  provides the possibility to schedule appointments for facility customers.
+Each request authorised by HTTP Basic authentification.
+Project consists of 2 requests: 
+1. The first request (api/schedule/entry) should receive that two files, parse them to json objects and send them back via
+HTTP response
+2. The second request (api/schedule/distribute) should handle the distribution of appointments into facilities based on user
+entry. When we send the response back to the user, they should be able to specify the number of people and empty spots they
+want to distribute into each of the facilities.
+
+For each of the appointment, we facility provides 1 hour. Schedule should be within one 4 weeks
+
+
 
 ## Getting Started
+
+### Technology stack
+1. Java
+2. Spring
+3. Hibernate
+4. Posgresql
+5. Maven
+
 ### Project set up
 1. Set up maven project
 2. Clone Appointment project from git repo.
@@ -79,17 +99,12 @@ This project is rest api which  provides the possibility to schedule appointment
 	;
 
 
-## Technology stack
-1. Java
-2. Spring
-3. Hibernate
-4. Posgresql
-5. Maven
+
 
 ### Running the Project
 Run Application class and set up Postman or other requester tool
  
-####First Request Congiuration
+##### First Request Congiuration
 1. Confiure POST request with url: http://127.0.0.1:8080/api/metadata
 2. Configure headers for basic authentification: user- admin, pass-admin
 3. Configure heasers to Accept application/json.
@@ -159,7 +174,7 @@ Run Application class and set up Postman or other requester tool
 	    ]
 	}
 	```
-####First Request Congiuration
+##### Second Request Congiuration
 1. Confiure POST request with url: http://localhost:8080/api/appointments
 2. Configure headers for basic authentification: user- admin, pass-admin
 3. Configure heasers to Content-Type application/x-www-form-urlencoded
